@@ -57,7 +57,7 @@ public class DataBase {
         }
     }
     public List<StocBilete> getStocBilete(){
-        int cantitate = 0;
+        int cantitate = 1;
         String sqlQuery = "SELECT * FROM stoc_bilete WHERE cantitate > ?";
         List<StocBilete> stocuri = new ArrayList<>();
         try (PreparedStatement st = connection.prepareStatement(sqlQuery)){

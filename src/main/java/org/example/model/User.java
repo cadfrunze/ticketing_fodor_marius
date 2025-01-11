@@ -38,7 +38,4 @@ public  class User {
         return _tipTicket;
     }
 
-
-
-
 }

@@ -9,15 +9,16 @@ import java.util.List;
 import java.util.Random;
 
 public class SystemDeliveryReceive {
-    private DataBase dataBase;
+    private final DataBase dataBase;
     private User user;
+    private static final String ALFABET = "QWERTYUIOPASDFGHJKLZXCVBNM";
 
 
     public SystemDeliveryReceive() throws SQLException, ClassNotFoundException {
         this.dataBase = new DataBase();
     }
     String generareTicket(){
-        String ALFABET = "QWERTYUIOPASDFGHJKLZXCVBNM";
+
         StringBuilder finalTicket = new StringBuilder();
 
         Random randomStart = new Random();
@@ -67,7 +68,7 @@ public class SystemDeliveryReceive {
     }
     public boolean sendNewUser() throws SQLException {
 //        System.out.println(generareTicket());
-        user = new User("fodor", "marius", "12345", "test@test.ro", "0743", generareTicket(), "mid");
+        this.user = new User("fodor", "marius", "123456", "test@test.ro", "0743", generareTicket(), "mid");
         if (dataBase.checkCnp(user.get_cnp())){
             dataBase.insertNewClient(user);
             return true;
