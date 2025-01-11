@@ -80,11 +80,11 @@ public class SystemDeliveryReceive {
         return dataBase.getStocBilete();
     }
 
-    public static void main(String[] args) throws SQLException, ClassNotFoundException {
-        SystemDeliveryReceive systemDeliveryReceive = new SystemDeliveryReceive();
-        System.out.println(systemDeliveryReceive.sendNewUser());
-        for (StocBilete stoc: systemDeliveryReceive.getStocuriBilete()){
-            System.out.println(stoc.getTip_ticket());
-        }
-    }
+//    public static void main(String[] args) throws SQLException, ClassNotFoundException {
+//        SystemDeliveryReceive systemDeliveryReceive = new SystemDeliveryReceive();
+//        System.out.println(systemDeliveryReceive.sendNewUser());
+//        for (StocBilete stoc: systemDeliveryReceive.getStocuriBilete()){
+//            System.out.println(stoc.getTip_ticket());
+//        }
+//    }
 }
