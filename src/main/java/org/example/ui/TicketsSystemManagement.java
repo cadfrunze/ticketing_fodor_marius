@@ -41,29 +41,53 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
+        jDialog1 = new javax.swing.JDialog();
+        jDialog2 = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         tab1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jTextPane2 = new javax.swing.JTextPane();
-        jPanel2 = new javax.swing.JPanel();
+        JPanelDate = new javax.swing.JPanel();
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jScrollPane7 = new javax.swing.JScrollPane();
-        jTextPane7 = new javax.swing.JTextPane();
+        tab1TfPrenume = new javax.swing.JTextPane();
         jScrollPane8 = new javax.swing.JScrollPane();
-        jTextPane8 = new javax.swing.JTextPane();
+        tab1TfCnp = new javax.swing.JTextPane();
         jScrollPane9 = new javax.swing.JScrollPane();
-        jTextPane9 = new javax.swing.JTextPane();
+        tab1TfTelefon = new javax.swing.JTextPane();
         jScrollPane10 = new javax.swing.JScrollPane();
-        jTextPane10 = new javax.swing.JTextPane();
+        tab1TfNume = new javax.swing.JTextPane();
         jScrollPane11 = new javax.swing.JScrollPane();
-        jTextPane11 = new javax.swing.JTextPane();
+        tab1TfEmail = new javax.swing.JTextPane();
+        jPanelBilete = new javax.swing.JPanel();
+        jLabel7 = new javax.swing.JLabel();
         tab2 = new javax.swing.JPanel();
+
+        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
+        jDialog1.getContentPane().setLayout(jDialog1Layout);
+        jDialog1Layout.setHorizontalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog1Layout.setVerticalGroup(
+            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
+        jDialog2.getContentPane().setLayout(jDialog2Layout);
+        jDialog2Layout.setHorizontalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        jDialog2Layout.setVerticalGroup(
+            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMaximumSize(new java.awt.Dimension(650, 650));
@@ -91,8 +115,6 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTabbedPane1.setName(""); // NOI18N
 
-        jScrollPane2.setViewportView(jTextPane2);
-
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("CNP");
         jLabel4.setAlignmentY(2.0F);
@@ -113,34 +135,63 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
         jLabel5.setText("Email");
         jLabel5.setAlignmentY(2.0F);
 
-        jScrollPane7.setViewportView(jTextPane7);
+        tab1TfPrenume.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tab1TfPrenumeKeyTyped(evt);
+            }
+        });
+        jScrollPane7.setViewportView(tab1TfPrenume);
+        tab1TfPrenume.getAccessibleContext().setAccessibleParent(JPanelDate);
 
-        jScrollPane8.setViewportView(jTextPane8);
+        tab1TfCnp.addFocusListener(new java.awt.event.FocusAdapter() {
+            public void focusLost(java.awt.event.FocusEvent evt) {
+                tab1TfCnpFocusLost(evt);
+            }
+        });
+        tab1TfCnp.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tab1TfCnpKeyTyped(evt);
+            }
+        });
+        jScrollPane8.setViewportView(tab1TfCnp);
+        tab1TfCnp.getAccessibleContext().setAccessibleParent(JPanelDate);
 
-        jScrollPane9.setViewportView(jTextPane9);
+        jScrollPane9.setViewportView(tab1TfTelefon);
+        tab1TfTelefon.getAccessibleContext().setAccessibleParent(JPanelDate);
 
-        jTextPane10.setToolTipText("");
-        jTextPane10.setMaximumSize(new java.awt.Dimension(62, 20));
-        jTextPane10.setName(""); // NOI18N
-        jScrollPane10.setViewportView(jTextPane10);
-        jTextPane10.getAccessibleContext().setAccessibleParent(null);
+        tab1TfNume.setToolTipText("");
+        tab1TfNume.setMaximumSize(new java.awt.Dimension(62, 20));
+        tab1TfNume.setName(""); // NOI18N
+        tab1TfNume.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tab1TfNumeKeyTyped(evt);
+            }
+        });
+        jScrollPane10.setViewportView(tab1TfNume);
+        tab1TfNume.getAccessibleContext().setAccessibleParent(JPanelDate);
 
-        jScrollPane11.setViewportView(jTextPane11);
+        tab1TfEmail.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                tab1TfEmailKeyTyped(evt);
+            }
+        });
+        jScrollPane11.setViewportView(tab1TfEmail);
+        tab1TfEmail.getAccessibleContext().setAccessibleParent(JPanelDate);
 
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        javax.swing.GroupLayout JPanelDateLayout = new javax.swing.GroupLayout(JPanelDate);
+        JPanelDate.setLayout(JPanelDateLayout);
+        JPanelDateLayout.setHorizontalGroup(
+            JPanelDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanelDateLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JPanelDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel5, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 85, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                .addGroup(JPanelDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                     .addComponent(jScrollPane11)
                     .addComponent(jScrollPane8, javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.Alignment.LEADING)
@@ -148,30 +199,52 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
                     .addComponent(jScrollPane9))
                 .addGap(0, 84, Short.MAX_VALUE))
         );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel2Layout.createSequentialGroup()
+        JPanelDateLayout.setVerticalGroup(
+            JPanelDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(JPanelDateLayout.createSequentialGroup()
                 .addContainerGap()
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(JPanelDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                     .addComponent(jScrollPane10)
                     .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JPanelDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGroup(JPanelDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 22, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JPanelDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel5)
                     .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
-                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(JPanelDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel6)
                     .addComponent(jScrollPane9, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addContainerGap(139, Short.MAX_VALUE))
+                .addContainerGap(90, Short.MAX_VALUE))
+        );
+
+        jPanelBilete.setVisible(false);
+        jPanelBilete.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        jLabel7.setText("Da!");
+
+        javax.swing.GroupLayout jPanelBileteLayout = new javax.swing.GroupLayout(jPanelBilete);
+        jPanelBilete.setLayout(jPanelBileteLayout);
+        jPanelBileteLayout.setHorizontalGroup(
+            jPanelBileteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBileteLayout.createSequentialGroup()
+                .addGap(45, 45, 45)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(233, Short.MAX_VALUE))
+        );
+        jPanelBileteLayout.setVerticalGroup(
+            jPanelBileteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanelBileteLayout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(jLabel7)
+                .addContainerGap(368, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout tab1Layout = new javax.swing.GroupLayout(tab1);
@@ -180,25 +253,21 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
             tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tab1Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(306, Short.MAX_VALUE))
-            .addGroup(tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(tab1Layout.createSequentialGroup()
-                    .addGap(166, 166, 166)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addComponent(JPanelDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jPanelBilete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(14, 14, 14))
         );
         tab1Layout.setVerticalGroup(
             tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tab1Layout.createSequentialGroup()
-                .addGap(51, 51, 51)
-                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addGap(199, 199, 199))
-            .addGroup(tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                .addGroup(tab1Layout.createSequentialGroup()
-                    .addGap(96, 96, 96)
-                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 0, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                .addContainerGap()
+                .addComponent(jPanelBilete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tab1Layout.createSequentialGroup()
+                .addContainerGap(30, Short.MAX_VALUE)
+                .addComponent(JPanelDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(269, 269, 269))
         );
 
         jTabbedPane1.addTab("Buy Ticket", tab1);
@@ -208,7 +277,7 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
         tab2.setLayout(tab2Layout);
         tab2Layout.setHorizontalGroup(
             tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 646, Short.MAX_VALUE)
+            .addGap(0, 677, Short.MAX_VALUE)
         );
         tab2Layout.setVerticalGroup(
             tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -234,6 +303,60 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+    //EVENTURI
+    void checkFielduri(){
+        if (tab1TfNume.getText().strip().length() < 3
+            || tab1TfPrenume.getText().strip().length() < 3
+            || tab1TfCnp.getText().strip().length() < 3
+            || tab1TfEmail.getText().strip().length() < 3)
+        {
+            jPanelBilete.setVisible(false);
+        }
+        else {jPanelBilete.setVisible(true);}
+    }
+    
+    
+    
+    
+    private void tab1TfCnpFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tab1TfCnpFocusLost
+        //System.out.println(tab1TfCnp.getText().toString());
+        if (tab1TfCnp.getText().strip().length() >= 3)
+        {
+            try {
+            // TODO add your handling code here:
+            this.sdr.cnpFind(tab1TfCnp.getText().strip());
+            System.out.println(this.sdr.cnpFind(tab1TfCnp.getText().strip()));
+            if (false == this.sdr.cnpFind(tab1TfCnp.getText().strip()))
+            {
+                checkFielduri();
+            }
+            else {jPanelBilete.setVisible(false);}
+        } catch (SQLException ex) {
+            Logger.getLogger(TicketsSystemManagement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        }
+        else {jPanelBilete.setVisible(false);}
+        
+    }//GEN-LAST:event_tab1TfCnpFocusLost
+
+    private void tab1TfNumeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tab1TfNumeKeyTyped
+        // TODO add your handling code here:
+        checkFielduri();
+    }//GEN-LAST:event_tab1TfNumeKeyTyped
+
+    private void tab1TfPrenumeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tab1TfPrenumeKeyTyped
+        // TODO add your handling code here:
+        checkFielduri();
+    }//GEN-LAST:event_tab1TfPrenumeKeyTyped
+
+    private void tab1TfEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tab1TfEmailKeyTyped
+        // TODO add your handling code here:
+        checkFielduri();
+    }//GEN-LAST:event_tab1TfEmailKeyTyped
+
+    private void tab1TfCnpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tab1TfCnpKeyTyped
+        // TODO add your handling code here:
+    }//GEN-LAST:event_tab1TfCnpKeyTyped
 
     /**
      * @param args the command line arguments
@@ -277,28 +400,30 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JPanel JPanelDate;
+    private javax.swing.JDialog jDialog1;
+    private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanelBilete;
     private javax.swing.JScrollPane jScrollPane10;
     private javax.swing.JScrollPane jScrollPane11;
-    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTextPane jTextPane10;
-    private javax.swing.JTextPane jTextPane11;
-    private javax.swing.JTextPane jTextPane2;
-    private javax.swing.JTextPane jTextPane7;
-    private javax.swing.JTextPane jTextPane8;
-    private javax.swing.JTextPane jTextPane9;
     private javax.swing.JPanel tab1;
+    private javax.swing.JTextPane tab1TfCnp;
+    private javax.swing.JTextPane tab1TfEmail;
+    private javax.swing.JTextPane tab1TfNume;
+    private javax.swing.JTextPane tab1TfPrenume;
+    private javax.swing.JTextPane tab1TfTelefon;
     private javax.swing.JPanel tab2;
     // End of variables declaration//GEN-END:variables
 }
