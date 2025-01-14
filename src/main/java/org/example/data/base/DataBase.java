@@ -25,10 +25,10 @@ public class DataBase {
                 while (resultSet.next()){
                     String cnpData = resultSet.getString("cnp");
                     if (Objects.equals(cnpData, cnp)){
-                        return false;
+                        return true;
                     }
                 }
-                return true;
+                return false;
             }
             catch (Exception e){return false;}
 
@@ -58,7 +58,7 @@ public class DataBase {
     }
     public List<StocBilete> getStocBilete(){
         int cantitate = 1;
-        String sqlQuery = "SELECT * FROM stoc_bilete WHERE cantitate > ?";
+        String sqlQuery = "SELECT * FROM stoc_bilete WHERE cantitate >= ?";
         List<StocBilete> stocuri = new ArrayList<>();
         try (PreparedStatement st = connection.prepareStatement(sqlQuery)){
             st.setInt(1, cantitate);

@@ -66,16 +66,19 @@ public class SystemDeliveryReceive {
         }
         return finalTicket.toString();
     }
-    public boolean sendNewUser() throws SQLException {
+    public void sendNewUser(String nume, String prenume, String cnp, String email, String telefon, String tip_ticket) throws SQLException {
 //        System.out.println(generareTicket());
-        this.user = new User("fodor", "marius", "123456", "test@test.ro", "0743", generareTicket(), "mid");
-        if (dataBase.checkCnp(user.get_cnp())){
-            dataBase.insertNewClient(user);
+        this.user = new User(nume, prenume, cnp, email, telefon, generareTicket(), tip_ticket);
+        dataBase.insertNewClient(user);
+
+    }
+    public boolean cnpFind(String cnp) throws SQLException{
+        if (dataBase.checkCnp(cnp)){
             return true;
         }
         return false;
-
     }
+    
     public List<StocBilete> getStocuriBilete(){
         return dataBase.getStocBilete();
     }

@@ -5,8 +5,10 @@
 package org.example.ui;
 
 import java.sql.SQLException;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import org.example.model.StocBilete;
 import org.example.services.SystemDeliveryReceive;
 
 
@@ -41,8 +43,6 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jDialog1 = new javax.swing.JDialog();
-        jDialog2 = new javax.swing.JDialog();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
@@ -70,29 +70,8 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
         tab1LbAv = new javax.swing.JLabel();
         jPanelBilete = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
+        tab1ComboIteme = new javax.swing.JComboBox<>();
         tab2 = new javax.swing.JPanel();
-
-        javax.swing.GroupLayout jDialog1Layout = new javax.swing.GroupLayout(jDialog1.getContentPane());
-        jDialog1.getContentPane().setLayout(jDialog1Layout);
-        jDialog1Layout.setHorizontalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog1Layout.setVerticalGroup(
-            jDialog1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout jDialog2Layout = new javax.swing.GroupLayout(jDialog2.getContentPane());
-        jDialog2.getContentPane().setLayout(jDialog2Layout);
-        jDialog2Layout.setHorizontalGroup(
-            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        jDialog2Layout.setVerticalGroup(
-            jDialog2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(650, 650));
@@ -300,21 +279,34 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
 
         jLabel7.setText("Da!");
 
+        tab1ComboIteme.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mousePressed(java.awt.event.MouseEvent evt) {
+                tab1ComboItemeMousePressed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelBileteLayout = new javax.swing.GroupLayout(jPanelBilete);
         jPanelBilete.setLayout(jPanelBileteLayout);
         jPanelBileteLayout.setHorizontalGroup(
             jPanelBileteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBileteLayout.createSequentialGroup()
-                .addGap(45, 45, 45)
-                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(251, Short.MAX_VALUE))
+                .addGroup(jPanelBileteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(jPanelBileteLayout.createSequentialGroup()
+                        .addGap(45, 45, 45)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanelBileteLayout.createSequentialGroup()
+                        .addGap(18, 18, 18)
+                        .addComponent(tab1ComboIteme, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(228, Short.MAX_VALUE))
         );
         jPanelBileteLayout.setVerticalGroup(
             jPanelBileteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBileteLayout.createSequentialGroup()
                 .addGap(24, 24, 24)
                 .addComponent(jLabel7)
-                .addContainerGap(368, Short.MAX_VALUE))
+                .addGap(28, 28, 28)
+                .addComponent(tab1ComboIteme, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(304, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout tab1Layout = new javax.swing.GroupLayout(tab1);
@@ -457,6 +449,16 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
         checkFielduri();
     }//GEN-LAST:event_tab1TfCnpKeyReleased
 
+    private void tab1ComboItemeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab1ComboItemeMousePressed
+        // TODO add your handling code here:
+        List<StocBilete> lista = this.sdr.getStocuriBilete();
+        tab1ComboIteme.removeAllItems();
+        for (StocBilete stoc: lista)
+        {
+            tab1ComboIteme.addItem(stoc.getTip_ticket());
+        }
+    }//GEN-LAST:event_tab1ComboItemeMousePressed
+
     /**
      * @param args the command line arguments
      */
@@ -501,8 +503,6 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JPanel JPanelDate;
-    private javax.swing.JDialog jDialog1;
-    private javax.swing.JDialog jDialog2;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -523,6 +523,7 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel tab1;
+    private javax.swing.JComboBox<String> tab1ComboIteme;
     private javax.swing.JLabel tab1LbAv;
     private javax.swing.JTextPane tab1TfCnp;
     private javax.swing.JTextPane tab1TfEmail;
