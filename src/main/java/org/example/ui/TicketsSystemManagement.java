@@ -4,7 +4,9 @@
  */
 package org.example.ui;
 
+import com.mysql.cj.protocol.Message;
 import java.sql.SQLException;
+import java.text.MessageFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -23,6 +25,7 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
      * Creates new form TicketsSystemManagement
      */
     private SystemDeliveryReceive sdr;
+    private List<StocBilete> lista;
     public TicketsSystemManagement() throws SQLException, ClassNotFoundException {
         sdr = new SystemDeliveryReceive();
         initComponents();
@@ -71,6 +74,8 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
         jPanelBilete = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         tab1ComboIteme = new javax.swing.JComboBox<>();
+        tab1LbCantitate = new javax.swing.JLabel();
+        tab1BtnPlateste = new javax.swing.JButton();
         tab2 = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -232,12 +237,8 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(JPanelDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(JPanelDateLayout.createSequentialGroup()
-                        .addGap(49, 49, 49)
-                        .addGroup(JPanelDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addGroup(JPanelDateLayout.createSequentialGroup()
-                                .addComponent(jLabel9)
-                                .addGap(40, 40, 40))
-                            .addComponent(jLabel10))
+                        .addGap(89, 89, 89)
+                        .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel11))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JPanelDateLayout.createSequentialGroup()
@@ -255,7 +256,9 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
                                                 .addComponent(jLabel8))
                                             .addComponent(jScrollPane10))
                                         .addGap(24, 24, 24)
-                                        .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                                        .addGroup(JPanelDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                                            .addComponent(jScrollPane7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                            .addComponent(jLabel9))))
                                 .addGap(18, 18, 18)
                                 .addComponent(jScrollPane8, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(JPanelDateLayout.createSequentialGroup()
@@ -277,11 +280,30 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
         jPanelBilete.setVisible(false);
         jPanelBilete.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
 
-        jLabel7.setText("Da!");
+        jLabel7.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        jLabel7.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel7.setText("Selecteaza Tip Bilet");
 
+        tab1ComboIteme.setFont(new java.awt.Font("Segoe UI", 0, 14)); // NOI18N
+        tab1ComboIteme.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                tab1ComboItemeItemStateChanged(evt);
+            }
+        });
         tab1ComboIteme.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                tab1ComboItemeMousePressed(evt);
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tab1ComboItemeMouseClicked(evt);
+            }
+        });
+
+        tab1LbCantitate.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        tab1LbCantitate.setToolTipText("");
+
+        tab1BtnPlateste.setBackground(new java.awt.Color(0, 102, 255));
+        tab1BtnPlateste.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tab1BtnPlateste.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                tab1BtnPlatesteMouseClicked(evt);
             }
         });
 
@@ -292,21 +314,29 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
             .addGroup(jPanelBileteLayout.createSequentialGroup()
                 .addGroup(jPanelBileteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanelBileteLayout.createSequentialGroup()
-                        .addGap(45, 45, 45)
-                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(78, 78, 78)
+                        .addGroup(jPanelBileteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(tab1ComboIteme, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addGroup(jPanelBileteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addComponent(tab1BtnPlateste, javax.swing.GroupLayout.DEFAULT_SIZE, 163, Short.MAX_VALUE)
+                                .addComponent(tab1LbCantitate, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
                     .addGroup(jPanelBileteLayout.createSequentialGroup()
-                        .addGap(18, 18, 18)
-                        .addComponent(tab1ComboIteme, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(228, Short.MAX_VALUE))
+                        .addGap(66, 66, 66)
+                        .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 191, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(76, Short.MAX_VALUE))
         );
         jPanelBileteLayout.setVerticalGroup(
             jPanelBileteLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelBileteLayout.createSequentialGroup()
-                .addGap(24, 24, 24)
-                .addComponent(jLabel7)
-                .addGap(28, 28, 28)
+                .addGap(17, 17, 17)
+                .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
                 .addComponent(tab1ComboIteme, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(304, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 77, Short.MAX_VALUE)
+                .addComponent(tab1LbCantitate, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(50, 50, 50)
+                .addComponent(tab1BtnPlateste, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(96, 96, 96))
         );
 
         javax.swing.GroupLayout tab1Layout = new javax.swing.GroupLayout(tab1);
@@ -316,20 +346,20 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
             .addGroup(tab1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(JPanelDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jPanelBilete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(14, 14, 14))
+                .addContainerGap(18, Short.MAX_VALUE))
         );
         tab1Layout.setVerticalGroup(
             tab1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(tab1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jPanelBilete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tab1Layout.createSequentialGroup()
                 .addContainerGap(46, Short.MAX_VALUE)
                 .addComponent(JPanelDate, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(269, 269, 269))
+            .addGroup(tab1Layout.createSequentialGroup()
+                .addGap(26, 26, 26)
+                .addComponent(jPanelBilete, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Buy Ticket", tab1);
@@ -339,7 +369,7 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
         tab2.setLayout(tab2Layout);
         tab2Layout.setHorizontalGroup(
             tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 695, Short.MAX_VALUE)
+            .addGap(0, 699, Short.MAX_VALUE)
         );
         tab2Layout.setVerticalGroup(
             tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -365,6 +395,93 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void tab1ComboItemeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab1ComboItemeMouseClicked
+        // TODO add your handling code here:
+        lista = this.sdr.getStocuriBilete();
+        tab1ComboIteme.removeAllItems();
+        for (StocBilete stoc: lista)
+        {
+            tab1ComboIteme.addItem(stoc.getTip_ticket());
+        }
+    }//GEN-LAST:event_tab1ComboItemeMouseClicked
+
+    private void tab1ComboItemeItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_tab1ComboItemeItemStateChanged
+        // TODO add your handling code here:
+        //System.out.println(tab1ComboIteme.getSelectedItem());
+
+        for (StocBilete selectat: lista)
+        {
+            if (selectat.getTip_ticket() == tab1ComboIteme.getSelectedItem())
+            {
+                tab1BtnPlateste.setVisible(true);
+                tab1LbCantitate.setVisible(true);
+                tab1LbCantitate.setText(MessageFormat.format("Cantitate: {0}", selectat.getCantitate()));
+                tab1BtnPlateste.setText(String.format("Pret bilet: %s lei   Plateste!", selectat.getPret()));
+            }
+            
+        }
+    }//GEN-LAST:event_tab1ComboItemeItemStateChanged
+
+    private void tab1TfEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tab1TfEmailKeyTyped
+        // TODO add your handling code here:
+        checkFielduri();
+    }//GEN-LAST:event_tab1TfEmailKeyTyped
+
+    private void tab1TfEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tab1TfEmailFocusLost
+        // TODO add your handling code here:
+        checkFielduri();
+    }//GEN-LAST:event_tab1TfEmailFocusLost
+
+    private void tab1TfNumeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tab1TfNumeKeyTyped
+        // TODO add your handling code here:
+        checkFielduri();
+    }//GEN-LAST:event_tab1TfNumeKeyTyped
+
+    private void tab1TfNumeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tab1TfNumeFocusLost
+        // TODO add your handling code here:
+        checkFielduri();
+    }//GEN-LAST:event_tab1TfNumeFocusLost
+
+    private void tab1TfCnpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tab1TfCnpKeyTyped
+        // TODO add your handling code here:
+        checkFielduri();
+    }//GEN-LAST:event_tab1TfCnpKeyTyped
+
+    private void tab1TfCnpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tab1TfCnpKeyReleased
+        // TODO add your handling code here:
+        checkFielduri();
+    }//GEN-LAST:event_tab1TfCnpKeyReleased
+
+    private void tab1TfCnpFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tab1TfCnpFocusLost
+        //System.out.println(tab1TfCnp.getText().toString());
+        checkFielduri();
+    }//GEN-LAST:event_tab1TfCnpFocusLost
+
+    private void tab1TfPrenumeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tab1TfPrenumeKeyTyped
+        // TODO add your handling code here:
+        checkFielduri();
+    }//GEN-LAST:event_tab1TfPrenumeKeyTyped
+
+    private void tab1TfPrenumeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tab1TfPrenumeFocusLost
+        // TODO add your handling code here:
+        checkFielduri();
+    }//GEN-LAST:event_tab1TfPrenumeFocusLost
+
+    private void tab1BtnPlatesteMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab1BtnPlatesteMouseClicked
+        try {
+            // TODO add your handling code here:
+            sdr.sendNewUser(tab1TfNume.getText().strip().toLowerCase(),
+                    tab1TfPrenume.getText().toLowerCase(),
+                    tab1TfCnp.getText().strip().toLowerCase(),
+                    tab1TfEmail.getText().strip().toLowerCase(),
+                    tab1TfTelefon.getText().strip(), (String) tab1ComboIteme.getSelectedItem());
+        } catch (SQLException ex) {
+            Logger.getLogger(TicketsSystemManagement.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        jPanelBilete.setVisible(false);
+        
+    }//GEN-LAST:event_tab1BtnPlatesteMouseClicked
     //EVENTURI
     void checkFielduri(){
         
@@ -386,6 +503,8 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
                     }
                 else {
                     jPanelBilete.setVisible(true);
+                    tab1BtnPlateste.setVisible(false);
+                    tab1LbCantitate.setVisible(false);
                     tab1LbAv.setText("");
                     }
             }
@@ -404,61 +523,6 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
     
     
     
-    private void tab1TfCnpFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tab1TfCnpFocusLost
-        //System.out.println(tab1TfCnp.getText().toString());
-        checkFielduri();
-    }//GEN-LAST:event_tab1TfCnpFocusLost
-
-    private void tab1TfNumeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tab1TfNumeKeyTyped
-        // TODO add your handling code here:
-        checkFielduri();
-    }//GEN-LAST:event_tab1TfNumeKeyTyped
-
-    private void tab1TfEmailKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tab1TfEmailKeyTyped
-        // TODO add your handling code here:
-        checkFielduri();
-    }//GEN-LAST:event_tab1TfEmailKeyTyped
-
-    private void tab1TfCnpKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tab1TfCnpKeyTyped
-        // TODO add your handling code here:
-        checkFielduri();
-    }//GEN-LAST:event_tab1TfCnpKeyTyped
-
-    private void tab1TfPrenumeKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tab1TfPrenumeKeyTyped
-        // TODO add your handling code here:
-        checkFielduri();
-    }//GEN-LAST:event_tab1TfPrenumeKeyTyped
-
-    private void tab1TfNumeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tab1TfNumeFocusLost
-        // TODO add your handling code here:
-        checkFielduri();
-    }//GEN-LAST:event_tab1TfNumeFocusLost
-
-    private void tab1TfPrenumeFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tab1TfPrenumeFocusLost
-        // TODO add your handling code here:
-        checkFielduri();
-    }//GEN-LAST:event_tab1TfPrenumeFocusLost
-
-    private void tab1TfEmailFocusLost(java.awt.event.FocusEvent evt) {//GEN-FIRST:event_tab1TfEmailFocusLost
-        // TODO add your handling code here:
-        checkFielduri();
-    }//GEN-LAST:event_tab1TfEmailFocusLost
-
-    private void tab1TfCnpKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tab1TfCnpKeyReleased
-        // TODO add your handling code here:
-        checkFielduri();
-    }//GEN-LAST:event_tab1TfCnpKeyReleased
-
-    private void tab1ComboItemeMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab1ComboItemeMousePressed
-        // TODO add your handling code here:
-        List<StocBilete> lista = this.sdr.getStocuriBilete();
-        tab1ComboIteme.removeAllItems();
-        for (StocBilete stoc: lista)
-        {
-            tab1ComboIteme.addItem(stoc.getTip_ticket());
-        }
-    }//GEN-LAST:event_tab1ComboItemeMousePressed
-
     /**
      * @param args the command line arguments
      */
@@ -523,8 +587,10 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
     private javax.swing.JPanel tab1;
+    private javax.swing.JButton tab1BtnPlateste;
     private javax.swing.JComboBox<String> tab1ComboIteme;
     private javax.swing.JLabel tab1LbAv;
+    private javax.swing.JLabel tab1LbCantitate;
     private javax.swing.JTextPane tab1TfCnp;
     private javax.swing.JTextPane tab1TfEmail;
     private javax.swing.JTextPane tab1TfNume;

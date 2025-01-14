@@ -69,7 +69,7 @@ public class SystemDeliveryReceive {
     public void sendNewUser(String nume, String prenume, String cnp, String email, String telefon, String tip_ticket) throws SQLException {
 //        System.out.println(generareTicket());
         this.user = new User(nume, prenume, cnp, email, telefon, generareTicket(), tip_ticket);
-        dataBase.insertNewClient(user);
+        dataBase.insertNewClient(this.user);
 
     }
     public boolean cnpFind(String cnp) throws SQLException{
