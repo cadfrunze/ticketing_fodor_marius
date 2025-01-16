@@ -10,6 +10,7 @@ import java.text.MessageFormat;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import org.example.model.StocBilete;
 import org.example.services.SystemDeliveryReceive;
 
@@ -472,6 +473,7 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
                     tab1TfCnp.getText().strip().toLowerCase(),
                     tab1TfEmail.getText().strip().toLowerCase(),
                     tab1TfTelefon.getText().strip(), (String) tab1ComboIteme.getSelectedItem());
+            JOptionPane.showMessageDialog(rootPane, "Ticket achizionat cu succes!. Vei primi un bon fiscal","Succes", JOptionPane.INFORMATION_MESSAGE);
         } catch (SQLException ex) {
             Logger.getLogger(TicketsSystemManagement.class.getName()).log(Level.SEVERE, null, ex);
         }
@@ -507,7 +509,7 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
             else {
                 jPanelBilete.setVisible(false);
                 
-                tab1LbAv.setText(String.format("Acest cnp: (%s) exista in baza de date!", tab1TfCnp.getText().strip()));
+                tab1LbAv.setText(String.format("Acest CNP: %s exista in baza de date!", tab1TfCnp.getText().strip()));
                 }
         } catch (SQLException ex) {
             Logger.getLogger(TicketsSystemManagement.class.getName()).log(Level.SEVERE, null, ex);
