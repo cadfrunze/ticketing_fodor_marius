@@ -4,7 +4,10 @@ import org.example.data.base.DataBase;
 import org.example.model.StocBilete;
 import org.example.model.User;
 
+import java.io.BufferedReader;
+import java.io.InputStreamReader;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
 
@@ -82,6 +85,34 @@ public class SystemDeliveryReceive {
     public List<StocBilete> getStocuriBilete(){
         return dataBase.getStocBilete();
     }
+
+    public void runScriptPython(){
+        List<String> command = new ArrayList<>();
+        try {
+            command.add("D:\\java-projects\\ticketing\\bonuri\\.venv\\Scripts\\python.exe"); // Sau "python3" în funcție de configurația ta
+            command.add("D:\\java-projects\\ticketing\\bonuri\\main.py"); // Calea completă către scriptul Python
+            //build process
+            ProcessBuilder processBuilder = new ProcessBuilder(command);
+
+            processBuilder.directory(new java.io.File("D:\\java-projects\\ticketing\\bonuri"));
+
+            processBuilder.redirectErrorStream(true);
+            Process process = processBuilder.start();
+
+            BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
+            String line;
+            while ((line = reader.readLine()) != null) {
+                System.out.println(line);
+            }
+
+            int exitCode = process.waitFor();
+            System.out.println(exitCode);
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+
 
 //    public static void main(String[] args) throws SQLException, ClassNotFoundException {
 //        SystemDeliveryReceive systemDeliveryReceive = new SystemDeliveryReceive();

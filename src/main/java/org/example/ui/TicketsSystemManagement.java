@@ -474,6 +474,7 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
                     tab1TfEmail.getText().strip().toLowerCase(),
                     tab1TfTelefon.getText().strip(), (String) tab1ComboIteme.getSelectedItem());
             JOptionPane.showMessageDialog(rootPane, "Ticket achizionat cu succes!. Vei primi un bon fiscal","Succes", JOptionPane.INFORMATION_MESSAGE);
+            sdr.runScriptPython();
         } catch (SQLException ex) {
             Logger.getLogger(TicketsSystemManagement.class.getName()).log(Level.SEVERE, null, ex);
         }
