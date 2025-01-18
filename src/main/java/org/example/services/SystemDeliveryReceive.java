@@ -10,11 +10,15 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Random;
+import org.example.model.InfoUser;
 
 public class SystemDeliveryReceive {
     private final DataBase dataBase;
+    private InfoUser infoUser;
     private User user;
+    
     private static final String ALFABET = "QWERTYUIOPASDFGHJKLZXCVBNM";
+    //private Object infouser;
 
 
     public SystemDeliveryReceive() throws SQLException, ClassNotFoundException {
@@ -89,14 +93,14 @@ public class SystemDeliveryReceive {
     public void runScriptPython(){
         List<String> command = new ArrayList<>();
         try {
-            command.add("D:\\java-projects\\ticketing\\bonuri\\.venv\\Scripts\\python.exe");
-            command.add("D:\\java-projects\\ticketing\\bonuri\\main.py");
+            command.add("D:\\\\java-projects\\\\ticketing\\\\bonuri\\\\.venv\\\\Scripts\\\\python.exe");
+            command.add("D:\\\\java-projects\\\\ticketing\\\\bonuri\\\\main.py");
             //build process
             ProcessBuilder processBuilder = new ProcessBuilder(command);
 
-            processBuilder.directory(new java.io.File("D:\\java-projects\\ticketing\\bonuri"));
+            processBuilder.directory(new java.io.File("D:\\\\java-projects\\\\ticketing\\\\bonuri"));
 
-            processBuilder.redirectErrorStream(true);
+            processBuilder.redirectErrorStream(false);
             Process process = processBuilder.start();
 
             BufferedReader reader = new BufferedReader(new InputStreamReader(process.getInputStream()));
@@ -112,7 +116,25 @@ public class SystemDeliveryReceive {
             e.printStackTrace();
         }
     }
-
+    
+    public void sendInfoUser(String serie_ticket, String cnp)
+    {
+        StringBuilder newSerieTicket = new StringBuilder();
+        
+        for (int i = 0; i < serie_ticket.length(); i++)
+        {
+            if (i == 3 || i == 6){newSerieTicket.append("-");}
+            newSerieTicket.append(serie_ticket.charAt(i));
+        }
+        serie_ticket = newSerieTicket.toString();
+        this.infoUser = dataBase.getInfoUser(serie_ticket, cnp);
+        
+    }
+    
+    public String getInfoUser()
+    {
+        return this.infoUser.toString();
+    }
 
 //    public static void main(String[] args) throws SQLException, ClassNotFoundException {
 //        SystemDeliveryReceive systemDeliveryReceive = new SystemDeliveryReceive();

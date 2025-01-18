@@ -27,6 +27,7 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
      */
     private SystemDeliveryReceive sdr;
     private List<StocBilete> lista;
+    
     public TicketsSystemManagement() throws SQLException, ClassNotFoundException {
         sdr = new SystemDeliveryReceive();
         initComponents();
@@ -78,6 +79,15 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
         tab1LbCantitate = new javax.swing.JLabel();
         tab1BtnPlateste = new javax.swing.JButton();
         tab2 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jLabel13 = new javax.swing.JLabel();
+        tab2Tf1 = new javax.swing.JTextField();
+        tab2Tf2 = new javax.swing.JTextField();
+        tab2Tf3 = new javax.swing.JTextField();
+        jLabel14 = new javax.swing.JLabel();
+        jLabel15 = new javax.swing.JLabel();
+        tab2TfCnp = new javax.swing.JTextField();
+        tab2ButtVerifica = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(650, 650));
@@ -259,11 +269,9 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
                     .addComponent(jLabel9))
                 .addGap(18, 18, 18)
                 .addGroup(JPanelDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(JPanelDateLayout.createSequentialGroup()
-                        .addGroup(JPanelDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                            .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jLabel5))
-                        .addGap(3, 3, 3))
+                    .addGroup(JPanelDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                        .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5))
                     .addComponent(jLabel10))
                 .addGap(18, 18, 18)
                 .addGroup(JPanelDateLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -362,15 +370,74 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
         jTabbedPane1.addTab("Buy Ticket", tab1);
         tab1.getAccessibleContext().setAccessibleName("");
 
+        jLabel12.setText("Serie ticket");
+
+        jLabel13.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel13.setText("CNP");
+
+        jLabel14.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel14.setText("-");
+
+        jLabel15.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        jLabel15.setText("-");
+
+        tab2ButtVerifica.setBackground(new java.awt.Color(0, 153, 204));
+        tab2ButtVerifica.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
+        tab2ButtVerifica.setText("Verifica/Editeaza!");
+        tab2ButtVerifica.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tab2ButtVerifica.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tab2ButtVerificaActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout tab2Layout = new javax.swing.GroupLayout(tab2);
         tab2.setLayout(tab2Layout);
         tab2Layout.setHorizontalGroup(
             tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 699, Short.MAX_VALUE)
+            .addGroup(tab2Layout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addGroup(tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(tab2Layout.createSequentialGroup()
+                        .addComponent(tab2Tf1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(tab2Tf2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(12, 12, 12)
+                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tab2TfCnp))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(tab2Tf3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(142, 142, 142)
+                .addComponent(tab2ButtVerifica, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(133, Short.MAX_VALUE))
         );
         tab2Layout.setVerticalGroup(
             tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 577, Short.MAX_VALUE)
+            .addGroup(tab2Layout.createSequentialGroup()
+                .addGroup(tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(tab2Layout.createSequentialGroup()
+                        .addGap(87, 87, 87)
+                        .addGroup(tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel14)
+                            .addComponent(tab2Tf1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tab2Tf3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel15)
+                            .addComponent(tab2Tf2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(tab2TfCnp, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addGroup(tab2Layout.createSequentialGroup()
+                        .addGap(108, 108, 108)
+                        .addComponent(tab2ButtVerifica, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(399, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Edit/Activate", tab2);
@@ -481,6 +548,12 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
         jPanelBilete.setVisible(false);
         
     }//GEN-LAST:event_tab1BtnPlatesteMouseClicked
+
+    private void tab2ButtVerificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tab2ButtVerificaActionPerformed
+        // TODO add your handling code here:
+        sdr.sendInfoUser(tab2Tf1.getText().strip()+tab2Tf2.getText().strip()+tab2Tf3.getText().strip(), tab2TfCnp.getText().strip());
+        System.out.println(sdr.getInfoUser());
+    }//GEN-LAST:event_tab2ButtVerificaActionPerformed
     //EVENTURI
     void checkFielduri(){
         
@@ -569,6 +642,10 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
+    private javax.swing.JLabel jLabel13;
+    private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -596,5 +673,10 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
     private javax.swing.JTextPane tab1TfPrenume;
     private javax.swing.JTextPane tab1TfTelefon;
     private javax.swing.JPanel tab2;
+    private javax.swing.JButton tab2ButtVerifica;
+    private javax.swing.JTextField tab2Tf1;
+    private javax.swing.JTextField tab2Tf2;
+    private javax.swing.JTextField tab2Tf3;
+    private javax.swing.JTextField tab2TfCnp;
     // End of variables declaration//GEN-END:variables
 }

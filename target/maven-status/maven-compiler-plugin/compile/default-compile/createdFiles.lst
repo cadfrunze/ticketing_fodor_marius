@@ -5,6 +5,7 @@ org\example\model\StocBilete.class
 org\example\ui\TicketsSystemManagement$1.class
 org\example\ui\TicketsSystemManagement$10.class
 org\example\ui\TicketsSystemManagement$5.class
+org\example\model\InfoUser.class
 org\example\ui\TicketsSystemManagement$11.class
 org\example\ui\TicketsSystemManagement$2.class
 org\example\services\SystemDeliveryReceive.class
@@ -15,4 +16,5 @@ org\example\MainApp.class
 org\example\ui\TicketsSystemManagement$12.class
 org\example\ui\TicketsSystemManagement$3.class
 org\example\ui\TicketsSystemManagement$8.class
+org\example\ui\TicketsSystemManagement$13.class
 org\example\ui\TicketsSystemManagement$4.class

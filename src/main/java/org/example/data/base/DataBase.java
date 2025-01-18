@@ -7,6 +7,7 @@ import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
+import org.example.model.InfoUser;
 
 public class DataBase {
     private final String DB_URL = "jdbc:mysql://" + System.getenv("urlAdress");
@@ -76,4 +77,48 @@ public class DataBase {
         catch (Exception e){e.printStackTrace();}
         return stocuri;
     }
+    
+    public InfoUser getInfoUser(String serie_ticket, String cnp)
+    {
+        String sqlquery = "SELECT * from evidenta_clienti WHERE cnp = ?";
+        String nume = null, prenume = null, email = null, telefon = null, validare = null;
+        int idEvClienti = 0;
+        try (PreparedStatement st = connection.prepareStatement(sqlquery))
+        {
+            st.setString(1, cnp);
+            try (ResultSet rs = st.executeQuery())
+            {
+                while (rs.next())
+                {
+                    nume = rs.getString("nume");
+                    prenume = rs.getString("prenume");
+                    
+                    email = rs.getString("email");
+                    telefon = rs.getString("telefon");
+                    idEvClienti = rs.getInt("idevidenta_clienti");
+                }
+            }
+            catch (Exception e){e.printStackTrace();}
+        }
+        catch (Exception e){e.printStackTrace();}
+        sqlquery = "SELECT validare from stoc_bilete_cumparate WHERE serie_ticket = ? AND fk_idevidenta_clienti = ?";
+        try (PreparedStatement st = connection.prepareStatement(sqlquery))
+        {
+            st.setString(1, serie_ticket);
+            st.setInt(2, idEvClienti);
+            try (ResultSet rs = st.executeQuery())
+            {
+                while (rs.next())
+                {
+                    validare = rs.getString("validare");
+                }
+            }
+            catch (Exception e){e.printStackTrace();}
+        }
+        catch (Exception e){e.printStackTrace();}
+    return new InfoUser(nume, prenume, email, telefon, validare, idEvClienti);
+    
+        
+    }
 }
+
