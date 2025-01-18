@@ -89,8 +89,8 @@ public class SystemDeliveryReceive {
     public void runScriptPython(){
         List<String> command = new ArrayList<>();
         try {
-            command.add("D:\\java-projects\\ticketing\\bonuri\\.venv\\Scripts\\python.exe"); // Sau "python3" în funcție de configurația ta
-            command.add("D:\\java-projects\\ticketing\\bonuri\\main.py"); // Calea completă către scriptul Python
+            command.add("D:\\java-projects\\ticketing\\bonuri\\.venv\\Scripts\\python.exe");
+            command.add("D:\\java-projects\\ticketing\\bonuri\\main.py");
             //build process
             ProcessBuilder processBuilder = new ProcessBuilder(command);
 
