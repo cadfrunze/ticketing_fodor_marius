@@ -25,16 +25,27 @@ public class InfoUser {
         
     }
     
-//    public String getNume(){return nume;}
-//    //public void setNume(String nume){this.nume = nume;}
-//    public String getEmail(){return email;}
-//    public String getTelefon(){return telefon;}
+    public String getNume(){return this.nume;}
     
-    @Override
-    public String toString()
-    {
-        return "[nume: "+this.nume+" prenume: "+this.prenume+" email: "+email+" telefon: "+telefon+" validare: "+validare+" idEvClienti: "+idEvClienti;
-    }
+    public String getPrenume(){return this.prenume;}
+    
+    public String getEmail(){return this.email;}
+    public void setEmail(String email){this.email = email;}
+    
+    public String getTelefon(){return this.telefon;}
+    public void setTelefon(String telefon){this.telefon = telefon;}
+    
+    public String getValidare(){return this.validare;}
+    public void setValidare(String validare){this.validare = validare;}
+    
+    public int getIdEvClienti(){return this.idEvClienti;}
+    
+    
+//    @Override
+//    public String toString()
+//    {
+//        return "[nume: "+this.nume+" prenume: "+this.prenume+" email: "+email+" telefon: "+telefon+" validare: "+validare+" idEvClienti: "+idEvClienti;
+//    }
     
     
     
