@@ -11,6 +11,7 @@ import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
+import org.example.model.InfoUser;
 import org.example.model.StocBilete;
 import org.example.services.SystemDeliveryReceive;
 
@@ -27,6 +28,7 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
      */
     private SystemDeliveryReceive sdr;
     private List<StocBilete> lista;
+    private int idEvClient;
     
     public TicketsSystemManagement() throws SQLException, ClassNotFoundException {
         sdr = new SystemDeliveryReceive();
@@ -88,6 +90,17 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
         jLabel15 = new javax.swing.JLabel();
         tab2TfCnp = new javax.swing.JTextField();
         tab2ButtVerifica = new javax.swing.JButton();
+        tab2Jpanel = new javax.swing.JPanel();
+        tab2LbNume = new javax.swing.JLabel();
+        tab2LbPrenume = new javax.swing.JLabel();
+        tab2EmailTf = new javax.swing.JTextField();
+        tab2TelefonTf = new javax.swing.JTextField();
+        tab2BtnDelete = new javax.swing.JButton();
+        tab2BtnSave1 = new javax.swing.JButton();
+        tab2BtnActiveaza = new javax.swing.JButton();
+        tab2RaspLb = new javax.swing.JLabel();
+        jLabel16 = new javax.swing.JLabel();
+        jLabel17 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(650, 650));
@@ -113,6 +126,11 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
 
         jTabbedPane1.setBorder(javax.swing.BorderFactory.createEtchedBorder());
         jTabbedPane1.setName(""); // NOI18N
+        jTabbedPane1.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTabbedPane1MouseClicked(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Segoe UI", 1, 14)); // NOI18N
         jLabel4.setText("CNP");
@@ -391,31 +409,138 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
             }
         });
 
+        tab2Jpanel.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+
+        tab2LbNume.setText("Nume: ");
+
+        tab2LbPrenume.setText("Prenume: ");
+
+        tab2BtnDelete.setBackground(new java.awt.Color(255, 0, 0));
+        tab2BtnDelete.setText("Delete!");
+        tab2BtnDelete.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tab2BtnDelete.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tab2BtnDeleteActionPerformed(evt);
+            }
+        });
+
+        tab2BtnSave1.setBackground(new java.awt.Color(0, 153, 255));
+        tab2BtnSave1.setText("Save");
+        tab2BtnSave1.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tab2BtnSave1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tab2BtnSave1ActionPerformed(evt);
+            }
+        });
+
+        tab2BtnActiveaza.setBackground(new java.awt.Color(51, 51, 255));
+        tab2BtnActiveaza.setText("Activeaza!");
+        tab2BtnActiveaza.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        tab2BtnActiveaza.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                tab2BtnActiveazaActionPerformed(evt);
+            }
+        });
+
+        tab2RaspLb.setFont(new java.awt.Font("Segoe UI", 1, 18)); // NOI18N
+        tab2RaspLb.setText("Bilet: ");
+
+        jLabel16.setText("Email");
+
+        jLabel17.setText("Telefon");
+
+        javax.swing.GroupLayout tab2JpanelLayout = new javax.swing.GroupLayout(tab2Jpanel);
+        tab2Jpanel.setLayout(tab2JpanelLayout);
+        tab2JpanelLayout.setHorizontalGroup(
+            tab2JpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tab2JpanelLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(tab2JpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tab2JpanelLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGroup(tab2JpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tab2JpanelLayout.createSequentialGroup()
+                                .addComponent(tab2BtnActiveaza, javax.swing.GroupLayout.PREFERRED_SIZE, 231, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(180, 180, 180))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tab2JpanelLayout.createSequentialGroup()
+                                .addGroup(tab2JpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tab2BtnSave1, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addComponent(tab2BtnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 139, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGap(232, 232, 232))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tab2JpanelLayout.createSequentialGroup()
+                                .addComponent(tab2RaspLb, javax.swing.GroupLayout.PREFERRED_SIZE, 269, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(154, 154, 154))))
+                    .addGroup(tab2JpanelLayout.createSequentialGroup()
+                        .addComponent(tab2LbNume, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(31, 31, 31)
+                        .addComponent(tab2LbPrenume, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(44, 44, 44)
+                        .addGroup(tab2JpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(tab2JpanelLayout.createSequentialGroup()
+                                .addComponent(tab2EmailTf, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(30, 30, 30)
+                                .addComponent(tab2TelefonTf))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, tab2JpanelLayout.createSequentialGroup()
+                                .addGap(0, 11, Short.MAX_VALUE)
+                                .addComponent(jLabel16, javax.swing.GroupLayout.PREFERRED_SIZE, 106, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(63, 63, 63)
+                                .addComponent(jLabel17, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(27, 27, 27))))))
+        );
+        tab2JpanelLayout.setVerticalGroup(
+            tab2JpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(tab2JpanelLayout.createSequentialGroup()
+                .addGap(15, 15, 15)
+                .addGroup(tab2JpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel16)
+                    .addComponent(jLabel17))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(tab2JpanelLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tab2LbNume)
+                    .addComponent(tab2LbPrenume)
+                    .addComponent(tab2EmailTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tab2TelefonTf, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(tab2RaspLb, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(tab2BtnSave1, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(tab2BtnDelete, javax.swing.GroupLayout.PREFERRED_SIZE, 47, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(29, 29, 29)
+                .addComponent(tab2BtnActiveaza, javax.swing.GroupLayout.PREFERRED_SIZE, 57, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap())
+        );
+
         javax.swing.GroupLayout tab2Layout = new javax.swing.GroupLayout(tab2);
         tab2.setLayout(tab2Layout);
         tab2Layout.setHorizontalGroup(
             tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(tab2Layout.createSequentialGroup()
-                .addGap(15, 15, 15)
-                .addGroup(tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addGroup(tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                .addGroup(tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(tab2Layout.createSequentialGroup()
-                        .addComponent(tab2Tf1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(15, 15, 15)
+                        .addGroup(tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(jLabel13, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel12, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(tab2Tf2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(12, 12, 12)
-                        .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(tab2TfCnp))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(tab2Tf3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(142, 142, 142)
-                .addComponent(tab2ButtVerifica, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(133, Short.MAX_VALUE))
+                        .addGroup(tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addGroup(tab2Layout.createSequentialGroup()
+                                .addComponent(tab2Tf1, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addComponent(jLabel14, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(tab2Tf2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addGap(12, 12, 12)
+                                .addComponent(jLabel15, javax.swing.GroupLayout.PREFERRED_SIZE, 16, javax.swing.GroupLayout.PREFERRED_SIZE))
+                            .addComponent(tab2TfCnp))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tab2Tf3, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(136, 136, 136)
+                        .addComponent(tab2ButtVerifica, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(tab2Layout.createSequentialGroup()
+                        .addGap(26, 26, 26)
+                        .addComponent(tab2Jpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap(54, Short.MAX_VALUE))
         );
         tab2Layout.setVerticalGroup(
             tab2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -437,7 +562,9 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
                     .addGroup(tab2Layout.createSequentialGroup()
                         .addGap(108, 108, 108)
                         .addComponent(tab2ButtVerifica, javax.swing.GroupLayout.PREFERRED_SIZE, 70, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(399, Short.MAX_VALUE))
+                .addGap(31, 31, 31)
+                .addComponent(tab2Jpanel, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(35, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Edit/Activate", tab2);
@@ -459,7 +586,8 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+    
+    // -----------------------------------------------------------------------TAB1------------------------------------------------------------------------------------------------------------
     private void tab1ComboItemeMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_tab1ComboItemeMouseClicked
         // TODO add your handling code here:
         lista = this.sdr.getStocuriBilete();
@@ -549,12 +677,74 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
         
     }//GEN-LAST:event_tab1BtnPlatesteMouseClicked
 
+    //----------------------------------------------------------------------TAB2-----------------------------------------------------------------------------------
+    void checkDate()
+    {   
+        tab2BtnActiveaza.setVisible(false);
+        InfoUser infoUser = sdr.getInfoUser();
+        this.idEvClient = infoUser.getIdEvClienti();
+        if (infoUser.getIdEvClienti() != 0)
+        {   
+            tab2Jpanel.setVisible(true);
+            tab2LbNume.setText("Nume: "+infoUser.getNume().toUpperCase());
+            tab2LbPrenume.setText("Prenume: "+infoUser.getPrenume().toUpperCase());
+            tab2EmailTf.setText(infoUser.getEmail());
+            tab2TelefonTf.setText(infoUser.getTelefon());
+            System.out.println(infoUser.getValidare());
+            if ("0".equals(infoUser.getValidare()))
+            {
+                tab2RaspLb.setText("Bilet: NEVALIDAT!");
+                tab2BtnActiveaza.setVisible(true);
+            }
+            else{tab2RaspLb.setText("Bilet: VALIDAT!");}
+            
+        }
+        else
+        {   
+            tab2Jpanel.setVisible(false);
+            JOptionPane.showMessageDialog(rootPane, "Nu te-am gasit in baza de date!","Fail", JOptionPane.ERROR_MESSAGE);
+            
+        }
+    }
     private void tab2ButtVerificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tab2ButtVerificaActionPerformed
         // TODO add your handling code here:
         sdr.sendInfoUser(tab2Tf1.getText().strip()+tab2Tf2.getText().strip()+tab2Tf3.getText().strip(), tab2TfCnp.getText().strip());
-        System.out.println(sdr.getInfoUser());
+        checkDate();
+        
     }//GEN-LAST:event_tab2ButtVerificaActionPerformed
-    //EVENTURI
+
+    private void jTabbedPane1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTabbedPane1MouseClicked
+        // TODO add your handling code here:
+        tab2Jpanel.setVisible(false);
+    }//GEN-LAST:event_jTabbedPane1MouseClicked
+
+    private void tab2BtnActiveazaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tab2BtnActiveazaActionPerformed
+        // TODO add your handling code here:
+        sdr.valideazaBilet(this.idEvClient);
+        sdr.sendInfoUser(tab2Tf1.getText().strip()+tab2Tf2.getText().strip()+tab2Tf3.getText().strip(), tab2TfCnp.getText().strip());
+        checkDate();
+        JOptionPane.showMessageDialog(rootPane, "Bilet validat cu succes","Validat!", JOptionPane.INFORMATION_MESSAGE);
+        
+        
+    }//GEN-LAST:event_tab2BtnActiveazaActionPerformed
+
+    private void tab2BtnSave1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tab2BtnSave1ActionPerformed
+        // TODO add your handling code here:
+        sdr.updateUser(this.idEvClient, tab2EmailTf.getText().toLowerCase().strip(), tab2TelefonTf.getText().toLowerCase().strip());
+        sdr.sendInfoUser(tab2Tf1.getText().strip()+tab2Tf2.getText().strip()+tab2Tf3.getText().strip(), tab2TfCnp.getText().strip());
+        checkDate();
+        JOptionPane.showMessageDialog(rootPane, "Validat!","Validat!", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_tab2BtnSave1ActionPerformed
+
+    private void tab2BtnDeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tab2BtnDeleteActionPerformed
+        // TODO add your handling code here:
+        sdr.deleteUser(this.idEvClient);
+        sdr.sendInfoUser(tab2Tf1.getText().strip()+tab2Tf2.getText().strip()+tab2Tf3.getText().strip(), tab2TfCnp.getText().strip());
+        checkDate();
+        JOptionPane.showMessageDialog(rootPane, "Utilizator sters cu succes!","Validat!", JOptionPane.INFORMATION_MESSAGE);
+    }//GEN-LAST:event_tab2BtnDeleteActionPerformed
+    
+    //------------------------------------------------------------------------EVENTURI DIN TAB1--------------------------------------------------------------------------------------
     void checkFielduri(){
         
             try {
@@ -646,6 +836,8 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
     private javax.swing.JLabel jLabel15;
+    private javax.swing.JLabel jLabel16;
+    private javax.swing.JLabel jLabel17;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -673,7 +865,16 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
     private javax.swing.JTextPane tab1TfPrenume;
     private javax.swing.JTextPane tab1TfTelefon;
     private javax.swing.JPanel tab2;
+    private javax.swing.JButton tab2BtnActiveaza;
+    private javax.swing.JButton tab2BtnDelete;
+    private javax.swing.JButton tab2BtnSave1;
     private javax.swing.JButton tab2ButtVerifica;
+    private javax.swing.JTextField tab2EmailTf;
+    private javax.swing.JPanel tab2Jpanel;
+    private javax.swing.JLabel tab2LbNume;
+    private javax.swing.JLabel tab2LbPrenume;
+    private javax.swing.JLabel tab2RaspLb;
+    private javax.swing.JTextField tab2TelefonTf;
     private javax.swing.JTextField tab2Tf1;
     private javax.swing.JTextField tab2Tf2;
     private javax.swing.JTextField tab2Tf3;
