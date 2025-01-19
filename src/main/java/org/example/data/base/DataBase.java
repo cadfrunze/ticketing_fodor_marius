@@ -120,5 +120,54 @@ public class DataBase {
     
         
     }
+    public int updateTicket(int index)
+    {
+        String sqlValidare = "UPDATE stoc_bilete_cumparate SET validare = ? WHERE fk_idevidenta_clienti = ?";
+        
+        try (PreparedStatement ps = connection.prepareStatement(sqlValidare))
+        {
+            ps.setString(1, "1");
+            ps.setInt(2, index);
+            ps.executeUpdate();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return 0;
+        }
+        return 0;
+        
+    }
+    public int updateEmailtelefon(int index, String email, String telefon)
+    {
+        String sqlUpdate = "UPDATE evidenta_clienti SET email = ?, telefon = ? WHERE idevidenta_clienti = ?";
+        try (PreparedStatement ps = connection.prepareStatement(sqlUpdate))
+        {
+            ps.setString(1, email);
+            ps.setString(2, telefon);
+            ps.setInt(3, index);
+            ps.executeUpdate();
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
+            return 0;
+        }
+        return 0;
+    }
+    
+    public void deleteData(int index)
+    {
+        String sql = "{CALL delete_user (?)}";
+        try (CallableStatement stmt = connection.prepareCall(sql)){
+            stmt.setInt(1, index);
+            stmt.execute();
+
+        }
+
+        catch (SQLException e ) {
+            e.printStackTrace();
+        }
+    }
 }
 
