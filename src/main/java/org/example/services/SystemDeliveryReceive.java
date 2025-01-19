@@ -131,10 +131,21 @@ public class SystemDeliveryReceive {
         
     }
     
-    public String getInfoUser()
+    public InfoUser getInfoUser()
     {
-        return this.infoUser.toString();
+        return this.infoUser;
     }
+    
+    public void valideazaBilet(int index)
+    {
+        dataBase.updateTicket(index);
+    }
+    
+    public void updateUser(int index, String email, String telefon)
+    {
+        dataBase.updateEmailtelefon(index, email, telefon);
+    }
+    public void deleteUser(int index){dataBase.deleteData(index);}
 
 //    public static void main(String[] args) throws SQLException, ClassNotFoundException {
 //        SystemDeliveryReceive systemDeliveryReceive = new SystemDeliveryReceive();
