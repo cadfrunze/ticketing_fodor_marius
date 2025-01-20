@@ -708,8 +708,14 @@ public class TicketsSystemManagement extends javax.swing.JFrame {
     }
     private void tab2ButtVerificaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tab2ButtVerificaActionPerformed
         // TODO add your handling code here:
-        sdr.sendInfoUser(tab2Tf1.getText().strip()+tab2Tf2.getText().strip()+tab2Tf3.getText().strip(), tab2TfCnp.getText().strip());
-        checkDate();
+        if (tab2TfCnp.getText().length() < 3){
+            JOptionPane.showMessageDialog(rootPane, "Atentie la campul CNP!","Eroare!!", JOptionPane.ERROR_MESSAGE);
+        }
+        else{
+            sdr.sendInfoUser(tab2Tf1.getText().strip()+tab2Tf2.getText().strip()+tab2Tf3.getText().strip(), tab2TfCnp.getText().strip());
+            checkDate();
+        }
+
         
     }//GEN-LAST:event_tab2ButtVerificaActionPerformed
 
