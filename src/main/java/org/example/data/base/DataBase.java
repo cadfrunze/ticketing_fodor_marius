@@ -79,13 +79,33 @@ public class DataBase {
     }
     
     public InfoUser getInfoUser(String serie_ticket, String cnp)
-    {
-        String sqlquery = "SELECT * from evidenta_clienti WHERE cnp = ?";
+    {   
+        
+        
         String nume = null, prenume = null, email = null, telefon = null, validare = null;
         int idEvClienti = 0;
+        String sqlquery = "SELECT validare, fk_idevidenta_clienti from stoc_bilete_cumparate WHERE serie_ticket = ?";
+        try (PreparedStatement st = connection.prepareStatement(sqlquery))
+        {
+            st.setString(1, serie_ticket);
+            //st.setInt(2, idEvClienti);
+            try (ResultSet rs = st.executeQuery())
+            {
+                while (rs.next())
+                {
+                    validare = rs.getString("validare");
+                    idEvClienti = rs.getInt("fk_idevidenta_clienti");
+                }
+            }
+            catch (Exception e){e.printStackTrace();}
+        }
+        catch (Exception e){e.printStackTrace();}
+        
+        sqlquery = "SELECT * from evidenta_clienti WHERE cnp = ? AND idevidenta_clienti = ?";
         try (PreparedStatement st = connection.prepareStatement(sqlquery))
         {
             st.setString(1, cnp);
+            st.setInt(2, idEvClienti);
             try (ResultSet rs = st.executeQuery())
             {
                 while (rs.next())
@@ -101,21 +121,7 @@ public class DataBase {
             catch (Exception e){e.printStackTrace();}
         }
         catch (Exception e){e.printStackTrace();}
-        sqlquery = "SELECT validare from stoc_bilete_cumparate WHERE serie_ticket = ? AND fk_idevidenta_clienti = ?";
-        try (PreparedStatement st = connection.prepareStatement(sqlquery))
-        {
-            st.setString(1, serie_ticket);
-            st.setInt(2, idEvClienti);
-            try (ResultSet rs = st.executeQuery())
-            {
-                while (rs.next())
-                {
-                    validare = rs.getString("validare");
-                }
-            }
-            catch (Exception e){e.printStackTrace();}
-        }
-        catch (Exception e){e.printStackTrace();}
+        
     return new InfoUser(nume, prenume, email, telefon, validare, idEvClienti);
     
         
