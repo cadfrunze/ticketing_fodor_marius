@@ -93,12 +93,12 @@ public class SystemDeliveryReceive {
     public void runScriptPython(){
         List<String> command = new ArrayList<>();
         try {
-            command.add("D:\\\\java-projects\\\\ticketing\\\\bonuri\\\\.venv\\\\Scripts\\\\python.exe");
-            command.add("D:\\\\java-projects\\\\ticketing\\\\bonuri\\\\main.py");
+            command.add("D:\\java-projects\\laborator-ssatr-ia-20204-automatica-cluj\\laborator-ssatr-ia-20204-cadfrunze\\ticketing_fodor_marius\\bonuri\\.venv\\Scripts\\python.exe");
+            command.add("D:\\java-projects\\laborator-ssatr-ia-20204-automatica-cluj\\laborator-ssatr-ia-20204-cadfrunze\\ticketing_fodor_marius\\bonuri\\main.py");
             //build process
             ProcessBuilder processBuilder = new ProcessBuilder(command);
 
-            processBuilder.directory(new java.io.File("D:\\\\java-projects\\\\ticketing\\\\bonuri"));
+            processBuilder.directory(new java.io.File("D:\\java-projects\\laborator-ssatr-ia-20204-automatica-cluj\\laborator-ssatr-ia-20204-cadfrunze\\ticketing_fodor_marius\\bonuri"));
 
             processBuilder.redirectErrorStream(false);
             Process process = processBuilder.start();
